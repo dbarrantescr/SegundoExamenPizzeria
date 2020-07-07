@@ -1,0 +1,7 @@
+El versionamiento consiste de 3 etapas:
+
+Versiones 1.X: Contienen la implementación del backend necesario para los calculos y la pizza.
+
+Versiones 2.X: Contienen la implementación del frontend, la página de pedidos de pizza, etc.
+
+Versiones 3.X: Contienen refinamiento de las anteriores y pruebas realizadas para los casos de prueba.
