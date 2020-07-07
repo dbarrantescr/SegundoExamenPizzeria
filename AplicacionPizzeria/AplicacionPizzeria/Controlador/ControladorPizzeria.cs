@@ -78,7 +78,7 @@ namespace AplicacionPizzeria.Controlador
             return ModeloPizza.TieneTopping(topping);
         }
 
-        public double AgregarPrecioEnvio()
+        public double CalcularPrecioEnvio()
         {
             return Calculador.PrecioEnvio();
         }

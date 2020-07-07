@@ -48,136 +48,147 @@
                     <p class="masthead-subheading font-weight-light mb-0 text-uppercase">Tu Pizza Favorita  -  En la puerta de tu casa</p>
                 </div>
             </header>
-            <!-- Tamño pizza -->
-            <section class="page-section portfolio" id="portfolio">
-                <div class="container">
-                    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Elige el tamaño de tu pizza</h2>
-                    <div class="divider-custom">
-                        <div class="divider-custom-line"></div>
-                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                        <div class="divider-custom-line"></div>
-                    </div>
-                    <!-- Seleccion tamaño pizza-->
-                    <div class="row">
-
-
-                        <input class="radio-input" type="radio" id="tamañoPequeño" name="tamaño" value="Pequeño" />
-                        <label for="tamañoPequeño">Pequeña</label>
-
-                        <input class="radio-input" type="radio" id="tamañoMediano" name="tamaño" value="Mediana" />
-                        <label for="tamañoMediano">Mediana</label>
-
-                        <input class="radio-input" type="radio" id="tamañoGrande" name="tamaño" value="Grande" />
-                        <label for="tamañoGrande">Grande</label>
-
-                        <input class="radio-input" type="radio" id="TamañoExtraGrande" name="tamaño" value="ExtraGrande" />
-                        <label for="TamañoExtraGrande">Extra Grande</label>
-
-                    </div>
-                </div>
-            </section>
-
-
-            <!-- Toppings Section -->
-            <section class="page-section bg-primary text-white mb-0" id="about">
-                <div class="container">
-
-                    <h2 class="page-section-heading text-center text-uppercase text-white">Elige los toppings de tu pizza</h2>
-
-                    <div class="divider-custom divider-light">
-                        <div class="divider-custom-line"></div>
-                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                        <div class="divider-custom-line"></div>
-                    </div>
-
-                    <div class="row">
-
-                        <input class="custom-checkbox" type="checkbox" name="Queso" id="Queso" />
-                        <label for="Queso">Queso</label>
-
-                        <input class="custom-checkbox" type="checkbox" name="Salsa" id="Salsa" />
-                        <label for="Salsa">Salsa</label>
-
-                        <input class="custom-checkbox" type="checkbox" name="Jamon" id="Jamon" />
-                        <label for="Jamon">Jamon</label>
-
-                        <input class="custom-checkbox" type="checkbox" name="Peperoni" id="Peperoni" />
-                        <label for="Peperoni">Peperoni</label>
-
-                        <input class="custom-checkbox" type="checkbox" name="Hongos" id="Hongos" />
-                        <label for="Hongos">Hongos</label>
-
-                        <input class="custom-checkbox" type="checkbox" name="Cebolla" id="Cebolla" />
-                        <label for="Cebolla">Cebolla</label>
-
-                        <input class="custom-checkbox" type="checkbox" name="Chile" id="Chile" />
-                        <label for="Chile">Chile</label>
-
-                        <input class="custom-checkbox" type="checkbox" name="Tocineta" id="Tocineta" />
-                        <label for="Tocineta">Tocineta</label>
-
-                        <input class="custom-checkbox" type="checkbox" name="Olivas" id="Olivas" />
-                        <label for="Olivas">Olivas</label>
-
-                        <input class="custom-checkbox" type="checkbox" name="Piña" id="Piña" />
-                        <label for="Piña">Piña</label>
-
-                    </div>
-
-                </div>
-            </section>
 
             <section class="page-section" id="SeccionDireccion">
                 <div class="container">
-                    <!-- Contact Section Heading-->
-                    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Ingresa la dirección de entrega</h2>
-                    <!-- Icon Divider-->
-                    <div class="divider-custom">
-                        <div class="divider-custom-line"></div>
-                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                        <div class="divider-custom-line"></div>
-                    </div>
-
-                    <!-- Direction Section -->
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <label>Direccion</label>
-                                    <input class="form-control" name="direccionPedido" id="name" type="text" placeholder="Dirección" required="required" data-validation-required-message="Por favor ingresa la dirección de envío." />
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <br />
-                            <div id="success"></div>
-                        </div>
-                    </div>
 
                     @if (Model.mensajeRetroalimentacion != null)
                     {
-                        <h5 class="message_success">Factura: @Model.mensajeRetroalimentacion </h5>
+                        if (Model.mensajeRetroalimentacion.Contains("favor"))
+                        {
+                            <h5 class="message_danger">@Model.mensajeRetroalimentacion </h5>
+                        }
+                        else
+                        {
+                            <h5 class="message_success">Factura: @Model.mensajeRetroalimentacion </h5>
+                        }
+                        Model.mensajeRetroalimentacion = null;
                     }
+                </div>
+            </div>
+                    <!-- Tamño pizza -->
+                    <section class="page-section portfolio" id="portfolio">
+                        <div class="container">
+                            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Elige el tamaño de tu pizza</h2>
+                            <div class="divider-custom">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+                            <!-- Seleccion tamaño pizza-->
+                            <div class="row">
 
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div style="display:flex; justify-content:center"><button class="btn btn-primary btn-xl" id="sendMessageButton" type="submit" name="OrdenarPizza">Ordenar Pizza</button></div>
+
+                                <input class="radio-input" type="radio" id="tamañoPequeño" name="tamaño" value="Pequeña" />
+                                <label for="tamañoPequeño">Pequeña</label>
+
+                                <input class="radio-input" type="radio" id="tamañoMediano" name="tamaño" value="Mediana" />
+                                <label for="tamañoMediano">Mediana</label>
+
+                                <input class="radio-input" type="radio" id="tamañoGrande" name="tamaño" value="Grande" />
+                                <label for="tamañoGrande">Grande</label>
+
+                                <input class="radio-input" type="radio" id="TamañoExtraGrande" name="tamaño" value="ExtraGrande" />
+                                <label for="TamañoExtraGrande">Extra Grande</label>
+
+                            </div>
                         </div>
-                    </div>
+                    </section>
 
 
+                    <!-- Toppings Section -->
+                    <section class="page-section bg-primary text-white mb-0" id="about">
+                        <div class="container">
 
-            </section>
+                            <h2 class="page-section-heading text-center text-uppercase text-white">Elige los toppings de tu pizza</h2>
 
-            <!-- Bootstrap core JS-->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-            <!-- Third party plugin JS-->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-            <!-- Contact form JS-->
-            <script src="assets/mail/jqBootstrapValidation.js"></script>
-            <script src="assets/mail/contact_me.js"></script>
-            <!-- Core theme JS-->
-            <script src="js/scripts.js"></script>
+                            <div class="divider-custom divider-light">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+
+                            <div class="row">
+
+                                <input class="custom-checkbox" type="checkbox" name="Queso" id="Queso" value="Queso" />
+                                <label for="Queso">Queso</label>
+
+                                <input class="custom-checkbox" type="checkbox" name="Salsa" id="Salsa" value="Salsa" />
+                                <label for="Salsa">Salsa</label>
+
+                                <input class="custom-checkbox" type="checkbox" name="Jamon" id="Jamon" value="Jamon" />
+                                <label for="Jamon">Jamon</label>
+
+                                <input class="custom-checkbox" type="checkbox" name="Peperoni" id="Peperoni" value="Peperoni" />
+                                <label for="Peperoni">Peperoni</label>
+
+                                <input class="custom-checkbox" type="checkbox" name="Hongos" id="Hongos" value="Hongos" />
+                                <label for="Hongos">Hongos</label>
+
+                                <input class="custom-checkbox" type="checkbox" name="Cebolla" id="Cebolla" value="Cebolla" />
+                                <label for="Cebolla">Cebolla</label>
+
+                                <input class="custom-checkbox" type="checkbox" name="Chile" id="Chile" value="Chile" />
+                                <label for="Chile">Chile</label>
+
+                                <input class="custom-checkbox" type="checkbox" name="Tocineta" id="Tocineta" value="Tocineta" />
+                                <label for="Tocineta">Tocineta</label>
+
+                                <input class="custom-checkbox" type="checkbox" name="Olivas" id="Olivas" value="Olivas" />
+                                <label for="Olivas">Olivas</label>
+
+                                <input class="custom-checkbox" type="checkbox" name="Piña" id="Piña" value="Piña" />
+                                <label for="Piña">Piña</label>
+
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <section class="page-section" id="SeccionDireccion">
+                        <div class="container">
+                            <!-- Contact Section Heading-->
+                            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Ingresa la dirección de entrega</h2>
+                            <!-- Icon Divider-->
+                            <div class="divider-custom">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+
+                            <!-- Direction Section -->
+                            <div class="row">
+                                <div class="col-lg-8 mx-auto">
+                                    <div class="control-group">
+                                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                            <label>Direccion</label>
+                                            <input class="form-control" name="direccionPedido" id="name" type="text" placeholder="Dirección" required="required" data-validation-required-message="Por favor ingresa la dirección de envío." />
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div id="success"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-lg-8 mx-auto">
+                                    <div style="display:flex; justify-content:center"><button class="btn btn-primary btn-xl" id="sendMessageButton" type="submit" name="OrdenarPizza">Ordenar Pizza</button></div>
+                                </div>
+                            </div>
+                    </section>
+
+                    <!-- Bootstrap core JS-->
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+                    <!-- Third party plugin JS-->
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+                    <!-- Contact form JS-->
+                    <script src="assets/mail/jqBootstrapValidation.js"></script>
+                    <script src="assets/mail/contact_me.js"></script>
+                    <!-- Core theme JS-->
+                    <script src="js/scripts.js"></script>
         </form>
 </body>
 

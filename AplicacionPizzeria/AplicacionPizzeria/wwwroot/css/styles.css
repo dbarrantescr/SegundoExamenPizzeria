@@ -3604,8 +3604,12 @@ input[type=button].btn-block {
     color: #5AD821;
 }
 
+message_danger {
+    color: #f59542;
+}
+
 rfieldset {
-    text-align:center;
+    text-align: center;
 }
 
 .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
