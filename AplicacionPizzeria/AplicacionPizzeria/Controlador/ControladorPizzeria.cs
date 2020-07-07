@@ -72,9 +72,20 @@ namespace AplicacionPizzeria.Controlador
             return ModeloPizza.TamañoActualPizza();
         }
 
+        //Se fija si la pizza tiene algún topping específico
         public bool ConsultarToppingPizza(string topping)
         {
             return ModeloPizza.TieneTopping(topping);
+        }
+
+        public double AgregarPrecioEnvio()
+        {
+            return Calculador.PrecioEnvio();
+        }
+
+        public double AgregarImpuesto(double precioSinImpuesto)
+        {
+            return Calculador.CalcularPrecioConImpuesto(precioSinImpuesto);
         }
 
     }

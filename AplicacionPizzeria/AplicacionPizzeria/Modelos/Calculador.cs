@@ -57,5 +57,10 @@ namespace AplicacionPizzeria.Modelos
         {
             this.DireccionEnvio = "";
         }
+
+        public double PrecioEnvio()
+        {
+            return CostoEnvio;
+        }
     }
 }
