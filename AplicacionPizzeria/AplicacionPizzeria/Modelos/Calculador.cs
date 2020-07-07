@@ -8,8 +8,9 @@ namespace AplicacionPizzeria.Modelos
     public class Calculador
     {
         //Valores constantes utilizadas en calculos
-        public const double impuestoDeVenta = 1.13;
-        public const double costoEnvio = 1000;
+        public const double ImpuestoDeVenta = 1.13;
+        public const double CostoEnvio = 1000;
+        public string DireccionEnvio = "";
 
         public Dictionary<string, double> preciosToppings = new Dictionary<string, double>()
         {
@@ -35,15 +36,26 @@ namespace AplicacionPizzeria.Modelos
 
 
         //Calcula el precio con impuesto incluido 
-        public double calcularPrecioConImpuesto(double precioSinImpuesto)
+        public double CalcularPrecioConImpuesto(double precioSinImpuesto)
         {
-            return (precioSinImpuesto * impuestoDeVenta);
+            return (precioSinImpuesto * ImpuestoDeVenta);
         }
 
         //Suma el precio correspondiente al topping enviado por parametro
-        public double agregarTopping(double precioPrevio, string topping)
+        public double AgregarPrecioTopping(double precioPrevio, string topping)
         {
             return (precioPrevio + preciosToppings[topping]);
+        }
+
+        //Establece la direccion de entrega
+        public void AgregarDireccion(string direccionEnvio)
+        {
+            this.DireccionEnvio = direccionEnvio;
+        }
+
+        public void QuitarDireccion()
+        {
+            this.DireccionEnvio = "";
         }
     }
 }
