@@ -15,7 +15,7 @@ namespace AplicacionPizzeria.Pages
 
         public void OnGet()
         {
-
+            this.mensajeRetroalimentacion = null;
         }
 
         public void OnPost()
@@ -27,12 +27,19 @@ namespace AplicacionPizzeria.Pages
             string tamaño = Request.Form["tamaño"];
             string direccion = Request.Form["direccionPedido"];
 
-            controlador.ElegirTamañoPizza(tamaño);
-            controlador.ElegirToppingsPizza(ingredientes);
+            if (tamaño == null || direccion == "")
+            {
+                mensajeRetroalimentacion = crearMensajeError(tamaño, direccion);
+            }
+            else
+            {
+                controlador.ElegirTamañoPizza(tamaño);
+                controlador.ElegirToppingsPizza(ingredientes);
 
-            double precioAPagar = calcularPrecioTotal(tamaño);
+                double precioAPagar = calcularPrecioTotal(tamaño);
 
-            mensajeRetroalimentacion = construirMensajeRetroAlimentacion(tamaño, direccion, ingredientes, precioAPagar);
+                mensajeRetroalimentacion = construirMensajeRetroAlimentacion(tamaño, direccion, ingredientes, precioAPagar);
+            }          
         }
 
         public void recolectarIngredientes(List<string> ingredientes)
@@ -51,6 +58,29 @@ namespace AplicacionPizzeria.Pages
             ingredientes.RemoveAll(ingrediente => ingrediente == null);
         }
 
+        public string crearMensajeError(string tamaño, string direccion)
+        {
+            string mensaje = "";
+            if (tamaño == null && direccion == "")
+            {
+                mensaje = "Por favor seleccione un tamaño de pizza e ingrese una dirección de envío.";
+                return mensaje;
+            }
+
+            if (tamaño == null)
+            {
+                mensaje = "Por favor seleccione un tamaño de pizza.";
+                return mensaje;
+            }
+
+            if (direccion == "")
+            {
+                mensaje = "Por favor ingrese una dirección de envío.";
+                return mensaje;
+            }
+            return mensaje;
+        }
+
         public string listaToppingsAString(List<string> ingredientes)
         {
             string toppings = "";
@@ -59,6 +89,9 @@ namespace AplicacionPizzeria.Pages
             {
                 toppings = toppings + " ";
                 toppings = toppings + ingrediente +",";
+
+                if (ingrediente == ingredientes.Last())
+                    toppings = toppings.Remove(toppings.Length - 1, 1) + ".";
             }
             return toppings;
         }
@@ -79,7 +112,11 @@ namespace AplicacionPizzeria.Pages
             }                        
 
             string listaToppings = listaToppingsAString(ingredientes);
-            mensaje = "Su pedido se ha efectuado! \n Pizza " + tamaño + " con:" + listaToppings + " Se entregara a la dirección: " + direccion + ". Con un costo de: " + precioAPagar + " IVA incluido.";
+
+            if(ingredientes.Count() > 0)
+                mensaje = "Su pedido se ha efectuado! \n Pizza " + tamaño + " con:" + listaToppings + " Se entregara a la dirección: " + direccion + ". Con un costo de: " + precioAPagar + "₡ IVA incluido.";
+            else
+                mensaje = "Su pedido se ha efectuado! \n Pizza " + tamaño + ". Se entregara a la dirección: " + direccion + ". Con un costo de: " + precioAPagar + " IVA incluido.";
 
             return mensaje;
         }
