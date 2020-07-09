@@ -5,3 +5,6 @@ Versiones 1.X: Contienen la implementación del backend necesario para los calcu
 Versiones 2.X: Contienen la implementación del frontend, la página de pedidos de pizza, etc.
 
 Versiones 3.X: Contienen refinamiento de las anteriores y pruebas realizadas para los casos de prueba.
+
+Las reglas para subir son: Todo código compila y es funcional para cada commit y push que se haga.
+Se hacen varios commits por día que corresponden al avance del examen.
