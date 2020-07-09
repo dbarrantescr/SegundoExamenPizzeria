@@ -114,9 +114,9 @@ namespace AplicacionPizzeria.Pages
             string listaToppings = listaToppingsAString(ingredientes);
 
             if(ingredientes.Count() > 0)
-                mensaje = "Su pedido se ha efectuado! \n Pizza " + tamaño + " con:" + listaToppings + " Se entregara a la dirección: " + direccion + ". Con un costo de: " + precioAPagar + "₡ IVA incluido. Costo de envío 1000₡ (incluído)";
+                mensaje = "Su pedido se ha efectuado! \n Pizza " + tamaño + " con:" + listaToppings + " Se entregara a la dirección: " + direccion + ". Con un costo de: ₡" + precioAPagar + " IVA incluido. Costo de envío ₡1000 (incluido).";
             else
-                mensaje = "Su pedido se ha efectuado! \n Pizza " + tamaño + ". Se entregara a la dirección: " + direccion + ". Con un costo de: " + precioAPagar + " IVA incluido. Costo de envío 1000₡ (incluído)";
+                mensaje = "Su pedido se ha efectuado! \n Pizza " + tamaño + ". Se entregara a la dirección: " + direccion + ". Con un costo de: ₡" + precioAPagar + " IVA incluido. Costo de envío ₡1000 (incluido)";
 
             return mensaje;
         }
