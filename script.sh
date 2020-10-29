@@ -23,8 +23,7 @@
 # SOFTWARE.
 
 apt-get install -y nginx
-for i in {1..1000}
-do
-   x=sqrt($i)
-done
 echo "Hello World from updated host" $HOSTNAME "!" | sudo tee /var/www/html/index.html
+while true; do
+   x=sqrt(100)
+done
