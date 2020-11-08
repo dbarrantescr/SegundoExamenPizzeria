@@ -1,29 +1,38 @@
-#!/bin/bash
+# Turn on execshield
+kernel.exec-shield=1
+kernel.randomize_va_space=1
 
-# The MIT License (MIT)
-#
-# Copyright (c) 2015 Microsoft Azure
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-# 
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-# 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
+# Enable IP spoofing protection
+net.ipv4.conf.all.rp_filter=1
 
-apt-get install -y nginx
-echo "Hello World from updated host" $HOSTNAME "!" | sudo tee /var/www/html/index.html
-while true; do
-   x=sqrt(100)
-done
+# Disable IP source routing
+net.ipv4.conf.all.accept_source_route=0
+
+# Ignoring broadcasts request
+net.ipv4.icmp_echo_ignore_broadcasts=1
+net.ipv4.icmp_ignore_bogus_error_messages=1
+
+# Make sure spoofed packets get logged
+net.ipv4.conf.all.log_martians = 1
+net.ipv4.conf.default.log_martians = 1
+
+# Disable ICMP routing redirects
+sysctl -w net.ipv4.conf.all.accept_redirects=0
+sysctl -w net.ipv6.conf.all.accept_redirects=0
+sysctl -w net.ipv4.conf.all.send_redirects=0
+sysctl -w net.ipv6.conf.all.send_redirects=0
+
+# Disables the magic-sysrq key
+kernel.sysrq = 0
+
+# Turn off the tcp_sack
+net.ipv4.tcp_sack = 0
+
+# Turn off the tcp_timestamps
+net.ipv4.tcp_timestamps = 0
+
+# Enable TCP SYN Cookie Protection
+net.ipv4.tcp_syncookies = 1
+
+# Enable bad error message Protection
+net.ipv4.icmp_ignore_bogus_error_responses = 1
